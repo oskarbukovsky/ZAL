@@ -1,55 +1,93 @@
+import math
+
+
 def addition(x, y):
     return x + y
+
 
 def subtraction(x, y):
     return x - y
 
+
 def multiplication(x, y):
     return x * y
 
+
 def division(x, y):
-    if x == y:
-        ValueError('This operation is not supported for given input parameters')
+    if y == 0:
+        raise ValueError("This operation is not supported for given input parameters")
     return x / y
 
+
 def modulo(x, y):
+    if x < y:
+        raise ValueError("This operation is not supported for given input parameters")
+    if y <= 0:
+        raise ValueError("This operation is not supported for given input parameters")
     return x % y
+
 
 def secondPower(x):
     return x * x
 
+
 def power(x, y):
-    return float(x ** y)
+    if y < 0:
+        raise ValueError("This operation is not supported for given input parameters")
+    return float(x**y)
+
 
 def secondRadix(x):
-    if x <= 0:
-        ValueError('This operation is not supported for given input parameters')
-    return x ** 1/2
+    try:
+        if x<=0:
+            raise ValueError("This operation is not supported for given input parameters")
+        result = x**(1/2)
+    except: 
+        raise ValueError("This operation is not supported for given input parameters")
+    return result
+
+# print("secondRadix 0:", secondRadix(0))
+# print("secondRadix 1:", secondRadix(-1.0))
+# print("secondRadix 1:", secondRadix(-1))
+# print("secondRadix 1:", secondRadix("-1"))
+# print("secondRadix 1:", secondRadix("1"))
+# print("secondRadix 2:", secondRadix(2))
+# print("secondRadix 3:", secondRadix(3))
+# print("secondRadix 4:", secondRadix(4))
+# print("secondRadix 4.5:", secondRadix(4.5))
+
 
 def magic(x, y, z, k):
     l = x + k
     m = y + z
     if m == 0:
-        ValueError('This operation is not supported for given input parameters')
-    n = (l/m) + 1
+        raise ValueError("This operation is not supported for given input parameters")
+    n = (l / m) + 1
     return n
 
 
 def control(a, x, y, z, k):
     match a:
         case "ADDITION":
-            addition()
+            return addition(x, y)
         case "SUBTRACTION":
-            subtraction()
+            return subtraction(x, y)
         case "MULTIPLICATION":
-            multiplication()
+            return multiplication(x, y)
         case "DIVISION":
-            division()
+            return division(x, y)
         case "MOD":
-            modulo()
+            return modulo(x, y)
         case "POWER":
-            power() 
+            return power(x, y)
         case "SECONDRADIX":
-            secondRadix()
+            return secondRadix(x)
         case "MAGIC":
-            magic()
+            return magic(x, y, z, k)
+        case _:
+            raise ValueError(
+                "This operation is not supported for given input parameters"
+            )
+
+
+# print("control: ", control("SECONDRADIX", 1, 3, 4, 5))
