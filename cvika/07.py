@@ -1,6 +1,6 @@
 from typing import Any
 from __future__ import annotations
-
+{   
 # class Car:
 #     def __init__(self, price, brand):
 #         self.price = price
@@ -41,7 +41,7 @@ from __future__ import annotations
 #     print(stack1.pop())
 
 # print(stack1.size())
-
+}
 
 class Node:
     def __init__(
